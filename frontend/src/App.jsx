@@ -9,9 +9,9 @@ import NavBar from './components/NavBar';
 
 export default function App(){
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50 text-slate-900">
       <NavBar />
-      <div className="container mx-auto p-4">
+      <main className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
@@ -19,7 +19,7 @@ export default function App(){
           <Route path="/dashboard" element={<StudentDashboard/>} />
           <Route path="/admin" element={<AdminDashboard/>} />
         </Routes>
-      </div>
+      </main>
     </div>
   );
 }

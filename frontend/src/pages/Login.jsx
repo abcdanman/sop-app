@@ -19,13 +19,15 @@ export default function Login(){
     }catch(e){ setErr(e.response?.data?.msg || 'Login failed'); }
   }
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-lg font-bold mb-4">Login</h2>
-      {err && <div className="text-red-600 mb-2">{err}</div>}
-      <form onSubmit={submit}>
-        <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email" className="w-full mb-2 p-2 border" />
-        <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Password" className="w-full mb-2 p-2 border" />
-        <button className="bg-blue-600 text-white px-4 py-2 rounded">Login</button>
+    <div className="mx-auto max-w-md rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/60 sm:p-9">
+      <p className="text-sm font-bold uppercase tracking-wider text-blue-600">Welcome back</p>
+      <h2 className="mt-2 text-3xl font-bold">Sign in to your portal</h2>
+      <p className="mt-2 text-sm text-slate-500">Check applications and programme updates.</p>
+      {err && <div className="mt-5 rounded-xl bg-red-50 p-3 text-sm text-red-700">{err}</div>}
+      <form onSubmit={submit} className="mt-6 space-y-4">
+        <label className="block text-sm font-semibold text-slate-700">Email<input type="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" className="mt-2 w-full rounded-xl border border-slate-300 p-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" /></label>
+        <label className="block text-sm font-semibold text-slate-700">Password<input required type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Your password" className="mt-2 w-full rounded-xl border border-slate-300 p-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" /></label>
+        <button className="w-full rounded-xl bg-blue-600 px-4 py-3 font-bold text-white shadow hover:bg-blue-700">Sign in</button>
       </form>
     </div>
   );

@@ -17,16 +17,18 @@ export default function Register(){
     }catch(e){ setErr(e.response?.data?.msg || 'Register failed'); }
   }
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-lg font-bold mb-4">Register</h2>
-      {err && <div className="text-red-600 mb-2">{err}</div>}
-      <form onSubmit={submit} className="space-y-2">
-        <input value={form.name} onChange={e=>setForm({...form, name:e.target.value})} placeholder="Name" className="w-full p-2 border" />
-        <input value={form.email} onChange={e=>setForm({...form, email:e.target.value})} placeholder="Email" className="w-full p-2 border" />
-        <input type="password" value={form.password} onChange={e=>setForm({...form, password:e.target.value})} placeholder="Password" className="w-full p-2 border" />
-        <input value={form.university} onChange={e=>setForm({...form, university:e.target.value})} placeholder="University" className="w-full p-2 border" />
-        <input value={form.course} onChange={e=>setForm({...form, course:e.target.value})} placeholder="Course" className="w-full p-2 border" />
-        <button className="bg-green-600 text-white px-4 py-2 rounded">Register</button>
+    <div className="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/60 sm:p-9">
+      <p className="text-sm font-bold uppercase tracking-wider text-blue-600">Student registration</p>
+      <h2 className="mt-2 text-3xl font-bold">Create your mobility profile</h2>
+      <p className="mt-2 text-sm text-slate-500">Use your university details so the programme team can verify your application.</p>
+      {err && <div className="mt-5 rounded-xl bg-red-50 p-3 text-sm text-red-700">{err}</div>}
+      <form onSubmit={submit} className="mt-6 grid gap-4 sm:grid-cols-2">
+        <input required value={form.name} onChange={e=>setForm({...form, name:e.target.value})} placeholder="Full name" className="rounded-xl border border-slate-300 p-3 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100" />
+        <input required type="email" value={form.email} onChange={e=>setForm({...form, email:e.target.value})} placeholder="Email address" className="rounded-xl border border-slate-300 p-3 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100" />
+        <input required type="password" minLength="8" value={form.password} onChange={e=>setForm({...form, password:e.target.value})} placeholder="Password (8+ characters)" className="rounded-xl border border-slate-300 p-3 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100" />
+        <input required value={form.university} onChange={e=>setForm({...form, university:e.target.value})} placeholder="University" className="rounded-xl border border-slate-300 p-3 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100" />
+        <input required value={form.course} onChange={e=>setForm({...form, course:e.target.value})} placeholder="Course / programme" className="rounded-xl border border-slate-300 p-3 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100 sm:col-span-2" />
+        <button className="rounded-xl bg-blue-600 px-4 py-3 font-bold text-white shadow hover:bg-blue-700 sm:col-span-2">Create account</button>
       </form>
     </div>
   );

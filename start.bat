@@ -5,8 +5,10 @@ echo.
 echo Backend:  http://localhost:5000
 echo Frontend: http://localhost:5173
 echo.
-start "SOP Backend" cmd /k "cd /d "%~dp0backend" && node server.js"
+if not exist "%~dp0backend\node_modules" call npm.cmd install --prefix "%~dp0backend"
+if not exist "%~dp0frontend\node_modules" call npm.cmd install --prefix "%~dp0frontend"
+start "SOP Backend" /D "%~dp0backend" cmd /k node server.js
 timeout /t 2 /nobreak >nul
-start "SOP Frontend" cmd /k "cd /d "%~dp0frontend" && npm run dev"
+start "SOP Frontend" /D "%~dp0frontend" cmd /k npm.cmd run dev
 timeout /t 3 /nobreak >nul
 start "" "http://localhost:5173"
